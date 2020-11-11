@@ -2,6 +2,7 @@
     border: 1px solid black;
     margin: 0 auto;
     width: 75%;
+    text-align: center;
 }
 
 .flex-box-container-1{
@@ -18,4 +19,13 @@
     display: flex;
     align-items: center;
     border: 1px solid black;
+}
+
+.flex-box-container-1 img{
+    border: 1px solid green;
+    max-width: 30%;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 10px 50px rgba(0,0,0,0.7);
 }
