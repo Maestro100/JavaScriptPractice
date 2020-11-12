@@ -1,3 +1,4 @@
+//Challenge 1
 function ageInDays() {
     var birthYear = prompt("Type your birth year");
     var age = (2020 - birthYear) * 365;
@@ -12,6 +13,8 @@ function resetAgeInDays() {
     document.getElementById('ageInDays').remove();
 }
 
+
+//Challenge 2
 var generation = 0;
 function generateCat() {
     var image = document.createElement("img");
@@ -36,6 +39,8 @@ function resetAllImages() {
     }
 }
 
+
+//Challenge 3
 function rpsGame(yourChoice) {
     var humanChoice = yourChoice.id;
     var botChoice = numberToChoice(Math.floor(Math.random() * 3));
@@ -85,4 +90,59 @@ function decideWinner(yourChoice, botChoice) {
 
 function numberToChoice(number) {
     return ['rock', 'paper', 'scissors'][number];
+}
+
+
+//Challenge 4
+var allButtons = document.getElementsByTagName('button');
+var copyAllButtons = [];
+for (let i = 0; i < allButtons.length; i++) {
+    copyAllButtons.push(allButtons[i].classList[1]);
+}
+
+
+function buttonColorChange(optionChoosen) {
+    if (optionChoosen.value === 'red') {
+        buttonRed();
+    }
+    else if (optionChoosen.value === 'green') {
+        buttonGreen();
+    }
+    else if (optionChoosen.value === 'reset') {
+        buttonColorReset();
+    }
+    else if (optionChoosen.value === 'random') {
+        randomColors();
+    }
+}
+
+function buttonRed() {
+    for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add('btn-danger');
+    }
+}
+
+function buttonGreen() {
+    for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add('btn-success');
+    }
+}
+
+function buttonColorReset() {
+    for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add(copyAllButtons[i]);
+    }
+}
+
+function randomColors() {
+    let choices = ['btn-primary', 'btn-danger', 'btn-success', 'btn-warning', 'btn-info'];
+    for (let i = 0; i < allButtons.length; i++) {
+        var randomNumber = Math.floor(Math.random() * choices.length);
+        // console.log(randomNumber);
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add(choices[randomNumber]);
+    }
 }
