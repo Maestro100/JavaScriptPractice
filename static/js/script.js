@@ -1,5 +1,3 @@
-// const { func } = require("prop-types");
-
 //Challenge 1
 function ageInDays() {
     var birthYear = prompt("Type your birth year");
@@ -248,18 +246,23 @@ function showScore(activePlayer) {
         document.querySelector(activePlayer['scoreSpan']).textContent = activePlayer['score'];
 }
 
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve,ms));
+}
 
-function dealerLogic() {
+async function dealerLogic() {
     blackjackGame['isStand'] = true;
-    let card = randomCard();
-    showCard(DEALER, card);
-    updateScore(DEALER, card);
-    showScore(DEALER);
 
-    if (DEALER['score'] > 15) {
-        blackjackGame['turnsOver'] = true;
-        showResult(computeWinner());
+    while (DEALER['score'] < 16 && blackjackGame['isStand'] === true) {
+        let card = randomCard();
+        showCard(DEALER, card);
+        updateScore(DEALER, card);
+        showScore(DEALER);
+        await sleep(1000);
     }
+
+    blackjackGame['turnsOver'] = true;
+    showResult(computeWinner());
     // showResult(computeWinner());
 }
 
